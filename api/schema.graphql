@@ -1,0 +1,39 @@
+# --- Models ---
+
+type Todo {
+  id: ID!
+  text: String!
+  done: Boolean!
+  userId: String!
+}
+
+type User {
+  id: ID!
+  name: String!
+}
+
+# --- Requests ---
+
+input CreateTodo {
+  text: String!
+  userId: String!
+}
+
+input UpdateTodo {
+  text: String!
+  userId: String!
+  todoId: String!
+}
+
+# --- APIs ---
+
+# Read
+type Query {
+  todos: [Todo!]!
+}
+
+# Create/Update
+type Mutation {
+  createTodo(input: CreateTodo!): Todo!
+  updateTodo(input: UpdateTodo!): Todo!
+}
